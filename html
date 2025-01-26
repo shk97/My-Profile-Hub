@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Programming Activity</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #f7a1c4, #c6e3f1, #fffa85, #ff84b8, #6cf6c5, #91c7f4);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 12px 20px;
+      background: #ff7e84;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #fa5a62;
+    }
+
+    nav {
+      margin-bottom: 20px;
+      background: #ff7e84;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 20px auto;
+    }
+
+    .page-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .flirty-line {
+      font-size: 1.2rem;
+      color: #ff6f61;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .big-name {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="loginPage" class="container">
+    <img src="https://img.icons8.com/ios/452/login-rounded-right.png" alt="Login Icon" class="page-icon">
+    <img src="https://img.icons8.com/ios/452/google-logo.png" alt="Logo" class="logo">
+    <h1>Login Page</h1>
+    <p>Access your account</p>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username">Name</label>
+        <input type="text" id="username" placeholder="Enter your name" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <button type="button" onclick="showFormPage()">Login</button>
+      <p style="margin-top: 10px;">
+        <a href="#" style="color: #ff7e84; text-decoration: none;" onclick="forgotPassword()">Forgot Password?</a>
+      </p>
+    </form>
+  </div>
+
+  <div id="formPage" class="container hidden">
+    <img src="https://img.icons8.com/ios/452/form.png" alt="Form Icon" class="page-icon">
+    <img src="https://img.icons8.com/ios/452/google-logo.png" alt="Logo" class="logo">
+    <nav>
+      <a href="#" onclick="showLoginPage()">Login</a>
+      <a href="#" onclick="showProfilePage()">Profile</a>
+    </nav>
+    <h1>Your Details</h1>
+    <form id="detailsForm">
+      <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="input-group">
+        <label for="number">Phone Number</label>
+        <input type="text" id="number" maxlength="10" pattern="\d{10}" required>
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="input-group">
+        <label for="birthdate">Birth Date</label>
+        <input type="date" id="birthdate" required>
+      </div>
+      <div class="input-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" required>
+      </div>
+      <div class="input-group">
+        <label for="gender">Gender</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="hobbies">Hobbies</label>
+        <input type="text" id="hobbies" placeholder="e.g., Reading, Coding" required>
+      </div>
+      <div class="input-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" required>
+      </div>
+      <div class="input-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" required>
+      </div>
+      <button type="button" id="submitButton" disabled onclick="showProfilePage()">Submit</button>
+    </form>
+  </div>
+
+  <div id="profilePage" class="container hidden">
+    <img src="https://img.icons8.com/ios/452/user-male-circle.png" alt="Profile Icon" class="page-icon">
+    <img src="https://img.icons8.com/ios/452/google-logo.png" alt="Logo" class="logo">
+    <nav>
+      <a href="#" onclick="showLoginPage()">Login</a>
+      <a href="#" onclick="showFormPage()">Details</a>
+    </nav>
+    <h1>Profile Page</h1>
+    <img id="profileImage" class="profile-image" src="https://picsum.photos/100" alt="Random Profile">
+    <div id="profileDetails">
+      <p class="big-name" id="profileName"></p>
+      <p><strong>Phone Number:</strong> <span id="profileNumber"></span></p>
+      <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+      <p><strong>Birth Date:</strong> <span id="profileBirthdate"></span></p>
+      <p><strong>Address:</strong> <span id="profileAddress"></span></p>
+      <p><strong>Gender:</strong> <span id="profileGender"></span></p>
+      <p><strong>Hobbies:</strong> <span id="profileHobbies"></span></p>
+      <p><strong>Age:</strong> <span id="profileAge"></span></p>
+      <p><strong>Country:</strong> <span id="profileCountry"></span></p>
+    </div>
+    <p class="flirty-line" id="flirtyLine"></p>
+  </div>
+
+  <script>
+    document.querySelectorAll("#detailsForm input, #detailsForm select").forEach(input => {
+      input.addEventListener("input", () => {
+        const allFilled = Array.from(document.querySelectorAll("#detailsForm input, #detailsForm select"))
+          .every(input => input.value);
+        document.getElementById("submitButton").disabled = !allFilled;
+      });
+    });
+
+    function showLoginPage() {
+      document.getElementById('loginPage').classList.remove('hidden');
+      document.getElementById('formPage').classList.add('hidden');
+      document.getElementById('profilePage').classList.add('hidden');
+    }
+
+    function showFormPage() {
+      document.getElementById('loginPage').classList.add('hidden');
+      document.getElementById('formPage').classList.remove('hidden');
+      document.getElementById('profilePage').classList.add('hidden');
+    }
+
+    function showProfilePage() {
+      const name = document.getElementById('name').value;
+      const number = document.getElementById('number').value;
+      const email = document.getElementById('email').value;
+      const birthdate = document.getElementById('birthdate').value;
+      const address = document.getElementById('address').value;
+      const gender = document.getElementById('gender').value;
+      const hobbies = document.getElementById('hobbies').value;
+      const age = document.getElementById('age').value;
+      const country = document.getElementById('country').value;
+
+      document.getElementById('profileName').textContent = name;
+      document.getElementById('profileNumber').textContent = number;
+      document.getElementById('profileEmail').textContent = email;
+      document.getElementById('profileBirthdate').textContent = birthdate;
+      document.getElementById('profileAddress').textContent = address;
+      document.getElementById('profileGender').textContent = gender;
+      document.getElementById('profileHobbies').textContent = hobbies;
+      document.getElementById('profileAge').textContent = age;
+      document.getElementById('profileCountry').textContent = country;
+
+      // Adding a playful, flirty line
+      const flirtyLine = `Are you sure you're not a magician? Because every time I look at you, I feel like I’m in a dream 🌟`;
+      document.getElementById('flirtyLine').textContent = flirtyLine;
+
+      document.getElementById('formPage').classList.add('hidden');
+      document.getElementById('profilePage').classList.remove('hidden');
+    }
+
+    function forgotPassword() {
+      alert("Forgot Password functionality is not implemented yet. Please contact support.");
+    }
+  </script>
+</body>
+</html>
